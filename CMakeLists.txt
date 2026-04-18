@@ -3,4 +3,6 @@ project(TreeCheck)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(TreeCheck main.cpp)
+add_executable(TreeCheck main.cpp
+        TreeNode.cpp
+        TreeNode.h)

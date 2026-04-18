@@ -1,16 +1,54 @@
 #include <iostream>
+#include "TreeNode.h"
+#include <fstream>
+#include <string>
+using namespace std;
 
-// TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+TreeNode* readInTree(const string& file);
+void printTreeInfo(TreeNode* root);
+
 int main() {
-    // TIP Press <shortcut actionId="RenameElement"/> when your caret is at the <b>lang</b> variable name to see how CLion can help you rename it.
-    auto lang = "C++";
-    std::cout << "Hello and welcome to " << lang << "!\n";
+    TreeNode* root = readInTree("../tree.txt");
+    printTreeInfo(root);
+}
 
-    for (int i = 1; i <= 5; i++) {
-        // TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        std::cout << "i = " << i << std::endl;
+void printTreeInfo(TreeNode* root) {
+    if (root == nullptr) {
+        cout << "Tree is empty" << endl;
+        return;
+    }
+    root->printInOrder();
+
+    cout << endl;
+    string avl = "no";
+    bool isBalanced = true;
+    root->printBalanceOptimized(isBalanced);
+    if (isBalanced) {
+        avl = "yes";
     }
 
-    return 0;
-    // TIP See CLion help at <a href="https://www.jetbrains.com/help/clion/">jetbrains.com/help/clion/</a>. Also, you can try interactive lessons for CLion by selecting 'Help | Learn IDE Features' from the main menu.
+    int count = 0;
+    int sum  = root->getAverage(count);
+
+    cout << "AVL: "<<avl <<endl;
+    cout <<"min: "<< root->getMin();
+    cout <<", max: "<< root->getMax();
+    cout <<", avg: "<< double(sum)/double(count) <<endl;
+    cout << endl;
+}
+
+TreeNode* readInTree(const string& file) {
+    ifstream inputFile(file);
+    if (!inputFile) {
+        cout << "File could not be opened" << endl;
+        return nullptr;
+    }
+    int number;
+    inputFile >> number;
+    TreeNode* root = new TreeNode(number);
+    while (inputFile >> number) {
+        TreeNode* node = new TreeNode(number);
+        root->addChild(node);
+    }
+    return root;
 }
