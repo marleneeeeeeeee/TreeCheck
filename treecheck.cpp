@@ -7,9 +7,18 @@ using namespace std;
 TreeNode* readInTree(const string& file);
 void printTreeInfo(TreeNode* root);
 
-int main() {
-    TreeNode* root = readInTree("../tree.txt");
+int main(int argc, char* argv[]) {
+    if (argc != 2) {
+        cout << "Usage: treecheck <filename>" << endl;
+        return 1;
+    }
+    string filename = argv[1];
+    cout << "Dateiname: " << filename << endl;
+
+    TreeNode* root = readInTree(filename);
     printTreeInfo(root);
+    delete root;
+    return 0;
 }
 
 void printTreeInfo(TreeNode* root) {
@@ -28,7 +37,7 @@ void printTreeInfo(TreeNode* root) {
     }
 
     int count = 0;
-    int sum  = root->getAverage(count);
+    int sum  = root->getSum(count);
 
     cout << "AVL: "<<avl <<endl;
     cout <<"min: "<< root->getMin();

@@ -6,6 +6,7 @@
 
 #include <iostream>
 #include <ostream>
+#include <algorithm>
 
 TreeNode::TreeNode(int value) {
     this->value = value;
@@ -20,6 +21,7 @@ int TreeNode::getValue() {
 void TreeNode::addChild(TreeNode *nodeToAppend) {
     if (this->value == nodeToAppend->getValue()) {
         std::cout << "Already exists!" << std::endl;
+        delete nodeToAppend;
         return;
     }
     if (nodeToAppend->getValue()<this->value) {
@@ -29,7 +31,7 @@ void TreeNode::addChild(TreeNode *nodeToAppend) {
         }
         this->left = nodeToAppend;
     }
-    if (nodeToAppend->getValue() > this->value) {
+    else if (nodeToAppend->getValue() > this->value) {
         if (this->right!=nullptr) {
             this->right->addChild(nodeToAppend);
             return;
@@ -64,13 +66,13 @@ int TreeNode::printBalanceOptimized(bool &isBalanced) {
     return std::max(heightLeft, heightRight) + 1;
 }
 
-int TreeNode::getAverage(int &count) {
+int TreeNode::getSum(int &count) {
     int sum = this->value;
     if (left != nullptr) {
-        sum += left->getAverage(count);
+        sum += left->getSum(count);
     }
     if (right != nullptr) {
-        sum += right->getAverage(count);
+        sum += right->getSum(count);
     }
     count++;
     return sum;
@@ -129,12 +131,6 @@ int TreeNode::getMax() {
 }
 
 TreeNode::~TreeNode() {
-    if (left!=nullptr) {
-        delete left;
-    }
-    if (right!=nullptr) {
-        delete right;
-    }
+    delete left;
+    delete right;
 }
-
-

@@ -19,7 +19,7 @@ public:
     int getMax();
     int getAverage();
     int printBalanceOptimized(bool &isBalanced);
-    int getAverage(int &count);
+    int getSum(int &count);
 private:
     TreeNode * left;
     TreeNode * right;
