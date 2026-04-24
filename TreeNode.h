@@ -17,7 +17,6 @@ public:
     int getHeight();
     int getMin();
     int getMax();
-    int getAverage();
     int printBalanceOptimized(bool &isBalanced);
     int getSum(int &count);
 private:

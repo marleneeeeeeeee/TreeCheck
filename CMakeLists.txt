@@ -5,4 +5,6 @@ set(CMAKE_CXX_STANDARD 20)
 
 add_executable(TreeCheck treecheck.cpp
         TreeNode.cpp
-        TreeNode.h)
+        TreeNode.h
+        Tree.cpp
+        Tree.h)
