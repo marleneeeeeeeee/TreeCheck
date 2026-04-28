@@ -20,14 +20,13 @@ int main(int argc, char* argv[]) {
     readInTree(argv[1], mainTree);
 
     if (argc == 2) {
-        // Teil 1: Statistik
+        // statistics
         mainTree->printTreeInfo();
     }
-    // ... im main-Block (argc == 3) ...
     else if (argc == 3) {
         Tree* subTree = new Tree();
 
-        // Wir lesen die Subtree-Werte ein
+        // read subtree values
         ifstream subFile(argv[2]);
         int val;
         vector<int> subValues;
@@ -37,10 +36,10 @@ int main(int argc, char* argv[]) {
         }
 
         if (subValues.size() == 1) {
-            // Fall: Einfache Suche
+            // search int
             mainTree->searchElement(subValues[0]);
         } else if (subValues.size() > 1) {
-            // Fall: Subtree Suche
+            // search subtree
             if (mainTree->containsSubtree(subTree)) {
                 cout << "Subtree found" << endl;
             } else {
@@ -52,30 +51,8 @@ int main(int argc, char* argv[]) {
 
     delete mainTree;
     return 0;
-/*
-    Tree* tree = new Tree();
-    readInTree(filename, tree);
-    tree->printTreeInfo();
-    delete tree;
-    return 0;
-    */
 }
 
-/*
-int main() {
-    cout << "Test Start" << endl;
-    Tree* tree = new Tree();
-    tree->addValue(10);
-    tree->addValue(5);
-    tree->addValue(15);
-    cout << "Werte hinzugefügt" << endl;
-    tree->printTreeInfo();
-    cout << "Info ausgegeben" << endl;
-    delete tree;
-    cout << "Test Ende" << endl;
-    return 0;
-}
-*/
 void readInTree(const string& file, Tree* tree) {
     ifstream inputFile(file);
     if (!inputFile) {
@@ -83,7 +60,6 @@ void readInTree(const string& file, Tree* tree) {
         return;
     }
     int number;
-//    inputFile >> number;
     while (inputFile >> number) {
         tree->addValue(number);
     }

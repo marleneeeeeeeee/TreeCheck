@@ -15,7 +15,6 @@ public:
     int getMax();
     int printBalanceOptimized(bool &isBalanced);
     int getSum(int &count);
-
     bool findPath(int target, std::vector<int>& path);
     bool compareStructure(TreeNode* other);
     TreeNode* findNode(int target);

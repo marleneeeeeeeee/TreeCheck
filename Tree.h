@@ -14,8 +14,6 @@ class Tree {
         bool isBalanced();
         float getAverage();
         void printTreeInfo();
-
-
         void searchElement(int target);
         bool containsSubtree(Tree* otherTree);
         TreeNode* getRoot(); // Hilfsfunktion
