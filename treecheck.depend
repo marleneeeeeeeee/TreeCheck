@@ -1,0 +1,33 @@
+# depslib dependency file v1.0
+1777371383 source:c:\users\malena\desktop\treecheck\treecheck\main.cpp
+	<iostream>
+	"TreeNode.h"
+	<fstream>
+	<string>
+	"Tree.h"
+
+1777401670 c:\users\malena\desktop\treecheck\treecheck\include\treenode.h
+	<vector>
+
+1777402621 c:\users\malena\desktop\treecheck\treecheck\include\tree.h
+
+1777407576 source:c:\users\malena\desktop\treecheck\treecheck\src\tree.cpp
+	"Tree.h"
+	"TreeNode.h"
+	"iostream"
+	<vector>
+
+1777407495 source:c:\users\malena\desktop\treecheck\treecheck\src\treenode.cpp
+	"TreeNode.h"
+	<iostream>
+	<ostream>
+	<algorithm>
+	<vector>
+
+1777401656 source:c:\users\malena\desktop\treecheck\treecheck\treecheck.cpp
+	<iostream>
+	"TreeNode.h"
+	<fstream>
+	<string>
+	"Tree.h"
+
