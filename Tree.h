@@ -1,5 +1,6 @@
 #ifndef TREECHECK_TREE_H
 #define TREECHECK_TREE_H
+#include <vector>
 
 class TreeNode;
 
@@ -15,8 +16,8 @@ class Tree {
         float getAverage();
         void printTreeInfo();
         void searchElement(int target);
-        bool containsSubtree(Tree* otherTree);
-        TreeNode* getRoot(); // Hilfsfunktion
+        bool containsSubtree(const std::vector<int>& subValues);
+        TreeNode* getRoot();
 
     private:
         TreeNode* root;

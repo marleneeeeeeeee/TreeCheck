@@ -165,22 +165,41 @@ TreeNode* TreeNode::findNode(int target) {
     return nullptr;
 }
 
-bool TreeNode::compareStructure(TreeNode* other) {
-    if (other == nullptr) return true;
-    if (this->value != other->value) return false;
-
-    bool leftMatch = true;
-    if (other->left != nullptr) {
-        // if this->left != nullptr search automatically stops
-        leftMatch = (this->left != nullptr) && this->left->compareStructure(other->left);
+bool TreeNode::containsSequence(const std::vector<int>& sequence, int index) {
+    // found all values
+    if (index >= sequence.size()) {
+            return true;
     }
 
-    bool rightMatch = true;
-    if (other->right != nullptr) {
-        rightMatch = (this->right != nullptr) && this->right->compareStructure(other->right);
+    int target = sequence[index];
+
+    // current node is in the subtree sequence
+    if (this->value == target) {
+        if (index + 1 == sequence.size()) {
+                return true;
+        }
+
+        bool foundLeft = false;
+        bool foundRight = false;
+        if(left != nullptr) {
+            foundLeft = left->containsSequence(sequence, index + 1);
+        }
+        if(right != nullptr) {
+            foundRight = right->containsSequence(sequence, index + 1);
+        }
+
+        return foundLeft || foundRight;
     }
 
-    return leftMatch && rightMatch;
+    // current node is not in the sequence
+    if (target < this->value && left != nullptr) {
+        return left->containsSequence(sequence, index);
+    }
+    else if (target > this->value && right != nullptr) {
+        return right->containsSequence(sequence, index);
+    }
+
+    return false;
 }
 
 TreeNode::~TreeNode() {

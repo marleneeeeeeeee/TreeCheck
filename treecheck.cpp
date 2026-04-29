@@ -40,7 +40,8 @@ int main(int argc, char* argv[]) {
             mainTree->searchElement(subValues[0]);
         } else if (subValues.size() > 1) {
             // search subtree
-            if (mainTree->containsSubtree(subTree)) {
+            // In main (argc == 3)
+            if (mainTree->containsSubtree(subValues)) {
                 cout << "Subtree found" << endl;
             } else {
                 cout << "Subtree not found!" << endl;

@@ -101,16 +101,15 @@ void Tree::searchElement(int target) {
     }
 }
 
-bool Tree::containsSubtree(Tree* otherTree) {
-    if (otherTree->root == nullptr) return true;
-
-    // finds root of subtree in main tree
-    TreeNode* startNode = root->findNode(otherTree->root->getValue());
-    if (startNode == nullptr) {
+bool Tree::containsSubtree(const std::vector<int>& subValues) {
+    if (subValues.empty()) {
+            return true;
+    }
+    if (root == nullptr) {
             return false;
     }
 
-    return startNode->compareStructure(otherTree->root);
+    return root->containsSequence(subValues, 0);
 }
 
 TreeNode* Tree::getRoot() {

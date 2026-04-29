@@ -16,8 +16,8 @@ public:
     int printBalanceOptimized(bool &isBalanced);
     int getSum(int &count);
     bool findPath(int target, std::vector<int>& path);
-    bool compareStructure(TreeNode* other);
     TreeNode* findNode(int target);
+    bool containsSequence(const std::vector<int>& sequence, int index);
 
 private:
     TreeNode * left;
